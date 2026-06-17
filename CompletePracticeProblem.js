@@ -20,3 +20,36 @@ for(let i =0;i<=5;i++)
 console.log("Find the two digit random number sum: "+(sum));
 console.log("Find the two digit random number average: "+(Math.floor(sum/5)));
 
+
+//5.a)Feet conversion
+let feet = 42/12;
+console.log(feet);
+
+//5.b) 60*40 feet plot in meters
+let areaFeat = 60*40;
+let areaMeter =    areaFeat * 0.092903;
+console.log(areaMeter);
+
+//5.c) Function to calculate total area in acres
+function calculateTotalArea(singlePlotSize, unit = 'acres') {
+    const totalPlots = 25;
+    let totalAreaInAcres = 0;
+
+    if (unit === 'sqft') {
+        // 1 acre = 43,560 square feet
+        const SQFT_PER_ACRE = 43560;
+        const singlePlotInAcres = singlePlotSize / SQFT_PER_ACRE;
+        totalAreaInAcres = singlePlotInAcres * totalPlots;
+    } else {
+        // Assumes the input is already in acres
+        totalAreaInAcres = singlePlotSize * totalPlots;
+    }
+
+    // Round to 2 decimal places for clean output
+    return totalAreaInAcres.toFixed(2);
+}
+
+// Example 1: If one plot is 0.15 acres
+const areaExample1 = calculateTotalArea(0.15, 'acres');
+console.log(`Total area for 25 plots: ${areaExample1} acres`);
+// Output: Total area for 25 plots: 3.75 acres
